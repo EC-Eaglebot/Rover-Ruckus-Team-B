@@ -103,7 +103,7 @@ public class HardwareSteen
         rightfrontDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftbackDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightbackDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
         leftClaw  = hwMap.get(Servo.class, "left_hand");
