@@ -50,13 +50,13 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Servo channel:  Servo to open left claw:  "left_hand"
  * Servo channel:  Servo to open right claw: "right_hand"
  */
-public class HardwareSteen
+public class HardwareLeo
 {
     /* Public OpMode members. */
     public DcMotor  leftfrontDrive   = null;
     public DcMotor  rightfrontDrive  = null;
-    public DcMotor  leftbackDrive = null;
-    public DcMotor  rightbackDrive = null;
+    public DcMotor  leftbackDrive   = null;
+    public DcMotor  rightbackDrive  = null;
     //public DcMotor  leftArm     = null;
     public Servo    leftClaw    = null;
     public Servo    rightClaw   = null;
@@ -70,7 +70,7 @@ public class HardwareSteen
     private ElapsedTime period  = new ElapsedTime();
 
     /* Constructor */
-    public HardwareSteen(){
+    public HardwareLeo(){
 
     }
 
@@ -82,7 +82,7 @@ public class HardwareSteen
         // Define and Initialize Motors
         leftfrontDrive  = hwMap.get(DcMotor.class, "leftfront_drive");
         rightfrontDrive = hwMap.get(DcMotor.class, "rightfront_drive");
-        leftbackDrive = hwMap.get(DcMotor.class, "leftback_drive");
+        leftbackDrive  = hwMap.get(DcMotor.class, "leftback_drive");
         rightbackDrive = hwMap.get(DcMotor.class, "rightback_drive");
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         leftfrontDrive.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
@@ -92,9 +92,9 @@ public class HardwareSteen
 
         // Set all motors to zero power
         leftfrontDrive.setPower(0);
-        rightbackDrive.setPower(0);
-        leftbackDrive.setPower(0);
         rightfrontDrive.setPower(0);
+        leftbackDrive.setPower(0);
+        rightbackDrive.setPower(0);
         //leftArm.setPower(0);
 
         // Set all motors to run without encoders.
