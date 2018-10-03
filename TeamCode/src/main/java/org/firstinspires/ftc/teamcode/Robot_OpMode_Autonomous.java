@@ -53,7 +53,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 @TeleOp(name="My Cool OpMode that is Autonomous :)", group="Robot")
-//@Disabled
+@Disabled
 public class Robot_OpMode_Autonomous extends LinearOpMode {
 
     Robot my_cool_robot = new Robot();

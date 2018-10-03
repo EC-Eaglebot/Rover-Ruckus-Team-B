@@ -23,7 +23,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  */
 
 @TeleOp(name="My Cool Robot OpMode", group="Robot")
-//@Disabled
+@Disabled
 public class Robot_OpMode_Driver extends OpMode {
 
     /* Declare OpMode members. */

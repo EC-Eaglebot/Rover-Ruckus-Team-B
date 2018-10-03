@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 //import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
@@ -60,6 +61,7 @@ public class HardwareECRyug
    // public DcMotor  leftArm     = null;
    // public Servo    leftClaw    = null;
 //    public Servo    rightClaw   = null;
+    public ColorSensor color;
 
 
     public static final double MID_SERVO       =  0.5 ;
@@ -83,6 +85,7 @@ public class HardwareECRyug
         // Define and Initialize Motors
         left  = hwMap.get(DcMotor.class, "left_front");
         right = hwMap.get(DcMotor.class, "right_front");
+        color = hwMap.colorSensor.get("color_sensor");
       //  leftBack   = hwMap.get(DcMotor.class, "left_back");
       //  rightBack  = hwMap.get(DcMotor.class, "right_back");
        // leftArm    = hwMap.get(DcMotor.class, "left_arm");
