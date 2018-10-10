@@ -44,7 +44,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * The code assumes that you do NOT have encoders on the wheels,
  *   otherwise you would use: PushbotAutoDriveByEncoder;
  *
- *   The desired path in this example is:
+ *   The desired path in this example is: (ignore this parenthesis)
  *   - Drive forward for 3 seconds
  *   - Spin right for 1.3 seconds
  *   - Drive Backwards for 1 Second
