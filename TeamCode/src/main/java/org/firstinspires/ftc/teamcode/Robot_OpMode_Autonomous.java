@@ -109,7 +109,7 @@ public class Robot_OpMode_Autonomous extends LinearOpMode {
 
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftSpeed, rightSpeed);
+        //telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftSpeed, rightSpeed);
         telemetry.update();
 
     }
