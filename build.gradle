@@ -17,11 +17,14 @@ buildscript {
 
 
 
+<<<<<<< HEAD
 repositories {
     google()
     jcenter()
     //mavenCentral()
 }
+=======
+>>>>>>> origin/master
 allprojects {
     repositories {
         google()
