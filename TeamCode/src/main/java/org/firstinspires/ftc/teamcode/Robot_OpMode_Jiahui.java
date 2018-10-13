@@ -51,7 +51,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name="My Cool OpMode that is Autonomous :)", group="Robot")
-//@Disabled
+@Disabled
 public class Robot_OpMode_Jiahui extends LinearOpMode {
 
     // Declare OpMode members.
