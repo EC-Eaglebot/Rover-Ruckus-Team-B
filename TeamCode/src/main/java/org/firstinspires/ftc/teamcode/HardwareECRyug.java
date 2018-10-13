@@ -56,8 +56,8 @@ public class HardwareECRyug
     /* Public OpMode members. */
     public DcMotor  left   = null;
     public DcMotor  right  = null;
-   // public DcMotor  leftBack    = null;
-   // public DcMotor  rightBack   = null;
+    public DcMotor  leftBack    = null;
+    public DcMotor  rightBack   = null;
    // public DcMotor  leftArm     = null;
    // public Servo    leftClaw    = null;
 //    public Servo    rightClaw   = null;
@@ -86,27 +86,27 @@ public class HardwareECRyug
         left  = hwMap.get(DcMotor.class, "left_front");
         right = hwMap.get(DcMotor.class, "right_front");
         color = hwMap.colorSensor.get("color_sensor");
-      //  leftBack   = hwMap.get(DcMotor.class, "left_back");
-      //  rightBack  = hwMap.get(DcMotor.class, "right_back");
+        leftBack   = hwMap.get(DcMotor.class, "left_back");
+        rightBack  = hwMap.get(DcMotor.class, "right_back");
        // leftArm    = hwMap.get(DcMotor.class, "left_arm");
         left.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
-        right.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
-      //  leftBack.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-       // rightBack.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+        right.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
+        leftBack.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightBack.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
 
         // Set all motors to zero power
         left.setPower(0);
         right.setPower(0);
-      //  leftBack.setPower(0);
-      // rightBack.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
        // leftArm.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
         left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-      //  leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-      //  rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
       //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.

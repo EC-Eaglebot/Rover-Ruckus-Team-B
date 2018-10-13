@@ -100,8 +100,10 @@ public class ECRyugTeleopTank_Iterative extends OpMode{
         rightpush = -gamepad1.right_stick_y;
 
         robot.left.setPower(leftpush);
+        robot.leftBack.setPower(leftpush);
         //robot.rightfrontDrive.setPower(right);
         robot.right.setPower(rightpush);
+        robot.rightBack.setPower(rightpush);
         //robot.rightbackDrive.setPower(right);
 
         // Use gamepad left & right Bumpers to open and close the claw
