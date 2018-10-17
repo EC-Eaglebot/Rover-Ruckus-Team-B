@@ -29,11 +29,10 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.ColorSensor;
-//import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * This is NOT an opmode.
@@ -51,11 +50,11 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
  * Servo channel:  Servo to open left claw:  "left_hand"
  * Servo channel:  Servo to open right claw: "right_hand"
  */
-public class HardwareECRyug
+public class HardwareECRguy
 {
     /* Public OpMode members. */
-    public DcMotor  left   = null;
-    public DcMotor  right  = null;
+    public DcMotor  leftFront   = null;
+    public DcMotor  rightFront  = null;
     public DcMotor  leftBack    = null;
     public DcMotor  rightBack   = null;
    // public DcMotor  leftArm     = null;
@@ -73,7 +72,7 @@ public class HardwareECRyug
     //private ElapsedTime period  = new ElapsedTime();
 
     /* Constructor */
-    public HardwareECRyug(){
+    public HardwareECRguy(){
 
     }
 
@@ -83,37 +82,85 @@ public class HardwareECRyug
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        left  = hwMap.get(DcMotor.class, "left_front");
-        right = hwMap.get(DcMotor.class, "right_front");
+        leftFront = hwMap.get(DcMotor.class, "left_front");
+        rightFront = hwMap.get(DcMotor.class, "right_front");
         color = hwMap.colorSensor.get("color_sensor");
-        leftBack   = hwMap.get(DcMotor.class, "left_back");
-        rightBack  = hwMap.get(DcMotor.class, "right_back");
-       // leftArm    = hwMap.get(DcMotor.class, "left_arm");
-        left.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
-        right.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
+        leftBack = hwMap.get(DcMotor.class, "left_back");
+        rightBack = hwMap.get(DcMotor.class, "right_back");
+        // leftArm    = hwMap.get(DcMotor.class, "left_arm");
+        leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        rightFront.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
         leftBack.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         rightBack.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
 
         // Set all motors to zero power
-        left.setPower(0);
-        right.setPower(0);
+        leftFront.setPower(0);
+        rightFront.setPower(0);
         leftBack.setPower(0);
         rightBack.setPower(0);
-       // leftArm.setPower(0);
+        // leftArm.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-      //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
-       // leftClaw  = hwMap.get(Servo.class, "left_hand");
-       // rightClaw = hwMap.get(Servo.class, "right_hand");
-       // leftClaw.setPosition(MID_SERVO);
-       // rightClaw.setPosition(MID_SERVO);
+        // leftClaw  = hwMap.get(Servo.class, "left_hand");
+        // rightClaw = hwMap.get(Servo.class, "right_hand");
+        // leftClaw.setPosition(MID_SERVO);
+        // rightClaw.setPosition(MID_SERVO);
+
     }
+        void StopMoving(double Stoptime, ElapsedTime Runtime)
+        {
+            double end=Runtime.seconds() + Stoptime;
+            leftFront.setPower(0);
+            rightFront.setPower(0);
+            leftBack.setPower(0);
+            rightBack.setPower(0);
+            while (end>Runtime.seconds()) { }
+        }
+
+        void Forward(double Speed, double Stoptime, ElapsedTime Runtime)
+        {
+            double end=Runtime.seconds() + Stoptime;
+            leftFront.setPower(1);
+            rightFront.setPower(1);
+            leftBack.setPower(1);
+            rightBack.setPower(1);
+            while (end>Runtime.seconds());
+        }
+        void Backward(double Speed, double Stoptime, ElapsedTime Runtime)
+        {
+            double end=Runtime.seconds() + Stoptime;
+            leftFront.setPower(-1);
+            rightFront.setPower(-1);
+            leftBack.setPower(-1);
+            rightBack.setPower(-1);
+            while (end>Runtime.seconds());
+
+            void TurnLeft(double Speed, double Stoptime, ElapsedTime Runtime)
+            {
+                double end=Runtime.seconds() + Stoptime;
+                leftFront.setPower(-1);
+                rightFront.setPower(1);
+                leftBack.setPower(-1);
+                rightBack.setPower(1);
+                while (end>Runtime.seconds());
+            }
+            void TurnRight(double Speed, double Stoptime, ElapsedTime Runtime)
+            {
+                double end=Runtime.seconds() + Stoptime;
+                leftFront.setPower(1);
+                rightFront.setPower(-1);
+                leftBack.setPower(1);
+                rightBack.setPower(-1);
+                while (end>Runtime.seconds());
+            }
+        }
  }
 
