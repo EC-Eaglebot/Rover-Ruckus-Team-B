@@ -57,12 +57,12 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Steen: Example", group="Steen")
-@Disabled
-public class SteenAutoDriveByTime_Linear extends LinearOpMode {
+@Autonomous(name="Auto Test Mode", group="concepts")
+//@Disabled
+public class Auto_Test_OpMode extends LinearOpMode {
 
     /* Declare OpMode members. */
-    HardwareSteen         robot   = new HardwareSteen();   // Use a Pushbot's hardware
+    HardwareECRguy          robot   = new HardwareECRguy();   // Use a Pushbot's hardware
     private ElapsedTime     runtime = new ElapsedTime();
 
 
@@ -88,38 +88,44 @@ public class SteenAutoDriveByTime_Linear extends LinearOpMode {
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
         // Step 1:  Drive forward for 3 seconds
-        robot.leftfrontDrive.setPower(FORWARD_SPEED);
-        robot.rightfrontDrive.setPower(FORWARD_SPEED);
+        robot.Forward(1, 3.0, runtime);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
-        // Step 2:  Spin right for 1.3 seconds
-        robot.leftfrontDrive.setPower(TURN_SPEED);
-        robot.rightfrontDrive.setPower(-TURN_SPEED);
+        // Step 2:  Stop for 1 second
+        robot.StopMoving(1.0, runtime);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.3)) {
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
-        // Step 3:  Drive Backwards for 1 Second
-        robot.leftfrontDrive.setPower(-FORWARD_SPEED);
-        robot.rightfrontDrive.setPower(-FORWARD_SPEED);
+        // Step 3:  Drive Backwards for 3 Seconds
+        robot.Backward(1, 3.0, runtime);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
             telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
 
-        // Step 4:  Stop and close the claw.
-        robot.leftfrontDrive.setPower(0);
-        robot.rightfrontDrive.setPower(0);
-        robot.leftClaw.setPosition(1.0);
-        robot.rightClaw.setPosition(0.0);
+        // Step 4:  Drive Backwards for 3 Seconds
+        robot.TurnLeft(1, 1.0, runtime);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
+            telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
 
+        // Step 5:  Drive Backwards for 3 Seconds
+        robot.TurnRight(1, 1.0, runtime);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
+            telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);

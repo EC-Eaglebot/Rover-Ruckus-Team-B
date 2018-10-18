@@ -31,6 +31,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -50,29 +51,28 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Servo channel:  Servo to open left claw:  "left_hand"
  * Servo channel:  Servo to open right claw: "right_hand"
  */
-public class HardwareECRguy
-{
+public class HardwareECRguy {
     /* Public OpMode members. */
-    public DcMotor  leftFront   = null;
-    public DcMotor  rightFront  = null;
-    public DcMotor  leftBack    = null;
-    public DcMotor  rightBack   = null;
-   // public DcMotor  leftArm     = null;
-   // public Servo    leftClaw    = null;
+    public DcMotor leftFront = null;
+    public DcMotor rightFront = null;
+    public DcMotor leftBack = null;
+    public DcMotor rightBack = null;
+    // public DcMotor  leftArm     = null;
+    // public Servo    leftClaw    = null;
 //    public Servo    rightClaw   = null;
     public ColorSensor color;
 
 
-   // public static final double MID_SERVO       =  0.5 ;
+    // public static final double MID_SERVO       =  0.5 ;
     //public static final double ARM_UP_POWER    =  0.45 ;
-   // public static final double ARM_DOWN_POWER  = -0.45 ;
+    // public static final double ARM_DOWN_POWER  = -0.45 ;
 
     /* local OpMode members. */
-    HardwareMap hwMap           =  null;
+    HardwareMap hwMap = null;
     //private ElapsedTime period  = new ElapsedTime();
 
     /* Constructor */
-    public HardwareECRguy(){
+    public HardwareECRguy() {
 
     }
 
@@ -102,10 +102,10 @@ public class HardwareECRguy
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
@@ -115,52 +115,145 @@ public class HardwareECRguy
         // rightClaw.setPosition(MID_SERVO);
 
     }
-        void StopMoving(double Stoptime, ElapsedTime Runtime)
-        {
-            double end=Runtime.seconds() + Stoptime;
-            leftFront.setPower(0);
-            rightFront.setPower(0);
-            leftBack.setPower(0);
-            rightBack.setPower(0);
-            while (end>Runtime.seconds()) { }
-        }
 
-        void Forward(double Speed, double Stoptime, ElapsedTime Runtime)
-        {
-            double end=Runtime.seconds() + Stoptime;
-            leftFront.setPower(1);
-            rightFront.setPower(1);
-            leftBack.setPower(1);
-            rightBack.setPower(1);
-            while (end>Runtime.seconds());
+    //FUNCTIONS: This first group uses time
+    void StopMoving(double Stoptime, ElapsedTime Runtime) {
+        double end = Runtime.seconds() + Stoptime;
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
+        while (end > Runtime.seconds()) {
         }
-        void Backward(double Speed, double Stoptime, ElapsedTime Runtime)
-        {
-            double end=Runtime.seconds() + Stoptime;
-            leftFront.setPower(-1);
-            rightFront.setPower(-1);
-            leftBack.setPower(-1);
-            rightBack.setPower(-1);
-            while (end>Runtime.seconds());
+    }
 
-            void TurnLeft(double Speed, double Stoptime, ElapsedTime Runtime)
-            {
-                double end=Runtime.seconds() + Stoptime;
-                leftFront.setPower(-1);
-                rightFront.setPower(1);
-                leftBack.setPower(-1);
-                rightBack.setPower(1);
-                while (end>Runtime.seconds());
-            }
-            void TurnRight(double Speed, double Stoptime, ElapsedTime Runtime)
-            {
-                double end=Runtime.seconds() + Stoptime;
-                leftFront.setPower(1);
-                rightFront.setPower(-1);
-                leftBack.setPower(1);
-                rightBack.setPower(-1);
-                while (end>Runtime.seconds());
-            }
+    void Forward(double Speed, double Stoptime, ElapsedTime Runtime) {
+        double end = Runtime.seconds() + Stoptime;
+        leftFront.setPower(Speed);
+        rightFront.setPower(Speed);
+        leftBack.setPower(Speed);
+        rightBack.setPower(Speed);
+        while (end > Runtime.seconds()) {
         }
+    }
+
+    void Backward(double Speed, double Stoptime, ElapsedTime Runtime) {
+        double end = Runtime.seconds() + Stoptime;
+        leftFront.setPower(-Speed);
+        rightFront.setPower(-Speed);
+        leftBack.setPower(-Speed);
+        rightBack.setPower(-Speed);
+        while (end > Runtime.seconds()) {
+        }
+    }
+
+    void TurnLeft(double Speed, double Stoptime, ElapsedTime Runtime) {
+        double end = Runtime.seconds() + Stoptime;
+        leftFront.setPower(-Speed);
+        rightFront.setPower(Speed);
+        leftBack.setPower(-Speed);
+        rightBack.setPower(Speed);
+        while (end > Runtime.seconds()) {
+        }
+    }
+
+    void TurnRight(double Speed, double Stoptime, ElapsedTime Runtime) {
+        double end = Runtime.seconds() + Stoptime;
+        leftFront.setPower(Speed);
+        rightFront.setPower(-Speed);
+        leftBack.setPower(Speed);
+        rightBack.setPower(-Speed);
+        while (end > Runtime.seconds()) {
+        }
+    }
+
+    //attempting to use Encoders for distance rather than time
+
+    void Forward_for_Distance(double distance, double speed) {
+        //change mode of motors
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        //put this in the op_mode to find position
+        //int position = leftFront.getCurrentPosition();
+        //telemetry.addData("Encoder Position", position);
+
+        double radius = 2.0; //radius of the wheels
+        double circ = 2 * radius * 3.1415;
+        double clicks = 1440;   //one rotation is how many clicks of encoder?
+        int rotations = (int) Math.round(distance/circ * clicks);
+
+        leftFront.setTargetPosition(rotations);
+        rightFront.setTargetPosition(rotations);
+        leftBack.setTargetPosition(rotations);
+        rightBack.setTargetPosition(rotations);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftFront.setPower(speed);
+        rightFront.setPower(speed);
+        leftBack.setPower(speed);
+        rightBack.setPower(speed);
+        while (leftFront.isBusy()) {
+            //empty on purpose
+        }
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
+
+    }
+
+    void Backward_for_Distance(double distance, double speed) {
+        this.Forward_for_Distance(-distance, -speed);
+    }
+
+    void Left_for_Distance(double degrees, double speed){
+        //change mode of motors
+        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        //put this in the op_mode to find position
+        //int position = leftFront.getCurrentPosition();
+        //telemetry.addData("Encoder Position", position);
+
+        double clicks = 1440;
+        double singledegree = 1440/360;
+        double rot_force = 3.4;
+        int rotations = (int) Math.round(degrees * singledegree*rot_force);
+
+        leftFront.setTargetPosition(-rotations);
+        rightFront.setTargetPosition(rotations);
+        leftBack.setTargetPosition(-rotations);
+        rightBack.setTargetPosition(rotations);
+
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftFront.setPower(-speed);
+        rightFront.setPower(speed);
+        leftBack.setPower(-speed);
+        rightBack.setPower(speed);
+        while (leftFront.isBusy()) {
+            //empty on purpose
+        }
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        leftBack.setPower(0);
+        rightBack.setPower(0);
+    }
+
+    void Right_for_Distance(double degrees, double speed){
+        this.Left_for_Distance(-degrees, -speed);
+    }
  }
 
