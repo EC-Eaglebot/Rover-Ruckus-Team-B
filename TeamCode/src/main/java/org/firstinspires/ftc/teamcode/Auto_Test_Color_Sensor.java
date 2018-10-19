@@ -54,9 +54,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Auto Test Encoders", group="concepts")
+@Autonomous(name="Auto Test Color", group="concepts")
 //@Disabled
-public class Auto_Test_Encoders extends LinearOpMode {
+public class Auto_Test_Color_Sensor extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareECRguy          robot   = new HardwareECRguy();
@@ -84,20 +84,30 @@ public class Auto_Test_Encoders extends LinearOpMode {
 
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
-        //Encoder Tests:
-        //Forward_for_Distance(inches, motor power)
-        //Backward_for_Distance(inches, motor power)
-        //Left_for_Distance(degrees, motor power)
-        //Right_for_Distance(degrees, motor power)
-        //StopMoving(seconds)
+        //Sensor Test:
+        //say Gold or White depending on the color reading
+        //read the sensor
+        int gold_qualifier = 100;
+        runtime.reset();
+        while (runtime.seconds() < 3) {
+            telemetry.addLine()
+                    .addData("R", "%d", robot.color.red())
+                    .addData("G", "%d", robot.color.green())
+                    .addData("B", "%d", robot.color.blue());
+            telemetry.update();
+        }
 
-        //robot.Forward_for_Distance(48, .85);
-        //robot.Backward_for_Distance(48, .5);
-        robot.Left_for_Distance(360, .5);
-        robot.StopMoving(1.0, runtime);
-        robot.Right_for_Distance(360, .2);
-        robot.StopMoving(1.0, runtime);
-        robot.Right_for_Distance(360, 1);
+        // if white
+        if (robot.color.blue() > gold_qualifier){
+            telemetry.addLine("WHITEY TIGHTY");
+            telemetry.update();
+            sleep(2000);
+        } // if red
+        else {
+            telemetry.addLine("GOLD IN THEM THAR HILLS");
+            telemetry.update();
+            sleep(2000);
+        }
 
 
         telemetry.addData("Path", "Complete");
