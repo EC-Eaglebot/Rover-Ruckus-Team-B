@@ -33,7 +33,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
-//import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * This is NOT an opmode.
@@ -63,7 +63,11 @@ public class HardwareECRyug {
     public ColorSensor color;
 
 
+<<<<<<< HEAD
     public static final double MID_SERVO = 0.5;
+=======
+   // public static final double MID_SERVO       =  0.5 ;
+>>>>>>> af4800950e0561f024472baf505900175c597e06
     //public static final double ARM_UP_POWER    =  0.45 ;
     // public static final double ARM_DOWN_POWER  = -0.45 ;
 
@@ -102,11 +106,19 @@ public class HardwareECRyug {
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
+<<<<<<< HEAD
         left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+=======
+        left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //  leftArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+>>>>>>> af4800950e0561f024472baf505900175c597e06
 
         // Define and initialize ALL installed servos.
         // leftClaw  = hwMap.get(Servo.class, "left_hand");
@@ -114,6 +126,7 @@ public class HardwareECRyug {
         // leftClaw.setPosition(MID_SERVO);
         // rightClaw.setPosition(MID_SERVO);
 
+<<<<<<< HEAD
         void stopMoving(double stopTime, ElapsedTime, runTime)
         {
             double end=runTime.seconds()+stopTime;
@@ -122,11 +135,23 @@ public class HardwareECRyug {
             rightBack.setPower(0);
             left.setPower(0);
             right.setPower(0);
+=======
+    }
+        void stopMoving(double stopTime, ElapsedTime runTime)
+        {
+            double end=runTime.seconds()+stopTime;
+
+            left.setPower(0);
+            right.setPower(0);
+            leftBack.setPower(0);
+            rightBack.setPower(0);
+>>>>>>> af4800950e0561f024472baf505900175c597e06
 
             while (end > runTime.seconds())
             { }
         }
 
+<<<<<<< HEAD
         void forward(double speed, double stopTime,ElapsedTime,runTime)
         {
             double end = runTime.seconds() + stopTime;
@@ -142,4 +167,30 @@ public class HardwareECRyug {
 
 
 
+=======
+        void forward(double speed, double stopTime, ElapsedTime runTime) {
+            double end = runTime.seconds() + stopTime;
+
+            left.setPower(speed);
+            right.setPower(speed);
+            leftBack.setPower(speed);
+            rightBack.setPower(speed);
+
+            while (end > runTime.seconds()) {
+            }
+        }
+    void backward(double speed, double stopTime, ElapsedTime runTime) {
+        double end = runTime.seconds() + stopTime;
+        this.forward(-speed, stopTime, runTime);
+
+        left.setPower(speed);
+        right.setPower(speed);
+        leftBack.setPower(speed);
+        rightBack.setPower(speed);
+
+        while (end > runTime.seconds()) {
+        }
+    }
+ }
+>>>>>>> af4800950e0561f024472baf505900175c597e06
 
