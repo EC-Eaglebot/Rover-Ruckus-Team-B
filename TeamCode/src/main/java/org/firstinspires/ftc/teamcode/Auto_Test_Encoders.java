@@ -91,7 +91,7 @@ public class Auto_Test_Encoders extends LinearOpMode {
         //Right_for_Distance(degrees, motor power)
         //StopMoving(seconds)
 
-        //robot.Forward_for_Distance(48, .85);
+        robot.Forward_for_Distance(48, .85);
         //robot.Backward_for_Distance(48, .5);
         robot.Left_for_Distance(360, .5);
         robot.StopMoving(1.0, runtime);
