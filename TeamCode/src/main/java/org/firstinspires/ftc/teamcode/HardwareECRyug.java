@@ -33,7 +33,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
-//import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * This is NOT an opmode.
@@ -83,12 +83,12 @@ public class HardwareECRyug
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        left  = hwMap.get(DcMotor.class, "left_front");
+        left = hwMap.get(DcMotor.class, "left_front");
         right = hwMap.get(DcMotor.class, "right_front");
         color = hwMap.colorSensor.get("color_sensor");
-        leftBack   = hwMap.get(DcMotor.class, "left_back");
-        rightBack  = hwMap.get(DcMotor.class, "right_back");
-       // leftArm    = hwMap.get(DcMotor.class, "left_arm");
+        leftBack = hwMap.get(DcMotor.class, "left_back");
+        rightBack = hwMap.get(DcMotor.class, "right_back");
+        // leftArm    = hwMap.get(DcMotor.class, "left_arm");
         left.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         right.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
         leftBack.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
@@ -99,21 +99,58 @@ public class HardwareECRyug
         right.setPower(0);
         leftBack.setPower(0);
         rightBack.setPower(0);
-       // leftArm.setPower(0);
+        // leftArm.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-      //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //  leftArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // Define and initialize ALL installed servos.
-       // leftClaw  = hwMap.get(Servo.class, "left_hand");
-       // rightClaw = hwMap.get(Servo.class, "right_hand");
-       // leftClaw.setPosition(MID_SERVO);
-       // rightClaw.setPosition(MID_SERVO);
+        // leftClaw  = hwMap.get(Servo.class, "left_hand");
+        // rightClaw = hwMap.get(Servo.class, "right_hand");
+        // leftClaw.setPosition(MID_SERVO);
+        // rightClaw.setPosition(MID_SERVO);
+
+    }
+        void stopMoving(double stopTime, ElapsedTime runTime)
+        {
+            double end=runTime.seconds()+stopTime;
+
+            left.setPower(0);
+            right.setPower(0);
+            leftBack.setPower(0);
+            rightBack.setPower(0);
+
+            while (end > runTime.seconds())
+            { }
+        }
+
+        void forward(double speed, double stopTime, ElapsedTime runTime) {
+            double end = runTime.seconds() + stopTime;
+
+            left.setPower(speed);
+            right.setPower(speed);
+            leftBack.setPower(speed);
+            rightBack.setPower(speed);
+
+            while (end > runTime.seconds()) {
+            }
+        }
+    void backward(double speed, double stopTime, ElapsedTime runTime) {
+        double end = runTime.seconds() + stopTime;
+        this.forward(-speed, stopTime, runTime);
+
+        left.setPower(speed);
+        right.setPower(speed);
+        leftBack.setPower(speed);
+        rightBack.setPower(speed);
+
+        while (end > runTime.seconds()) {
+        }
     }
  }
 
