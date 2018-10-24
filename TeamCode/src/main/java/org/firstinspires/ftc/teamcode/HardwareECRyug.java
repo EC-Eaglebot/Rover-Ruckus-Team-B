@@ -51,29 +51,28 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
  * Servo channel:  Servo to open left claw:  "left_hand"
  * Servo channel:  Servo to open right claw: "right_hand"
  */
-public class HardwareECRyug
-{
+public class HardwareECRyug {
     /* Public OpMode members. */
-    public DcMotor  left   = null;
-    public DcMotor  right  = null;
-    public DcMotor  leftBack    = null;
-    public DcMotor  rightBack   = null;
-   // public DcMotor  leftArm     = null;
-   // public Servo    leftClaw    = null;
+    public DcMotor left = null;
+    public DcMotor right = null;
+    public DcMotor leftBack = null;
+    public DcMotor rightBack = null;
+    // public DcMotor  leftArm     = null;
+    // public Servo    leftClaw    = null;
 //    public Servo    rightClaw   = null;
     public ColorSensor color;
 
 
-    public static final double MID_SERVO       =  0.5 ;
+    public static final double MID_SERVO = 0.5;
     //public static final double ARM_UP_POWER    =  0.45 ;
-   // public static final double ARM_DOWN_POWER  = -0.45 ;
+    // public static final double ARM_DOWN_POWER  = -0.45 ;
 
     /* local OpMode members. */
-    HardwareMap hwMap           =  null;
+    HardwareMap hwMap = null;
     //private ElapsedTime period  = new ElapsedTime();
 
     /* Constructor */
-    public HardwareECRyug(){
+    public HardwareECRyug() {
 
     }
 
@@ -83,12 +82,12 @@ public class HardwareECRyug
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        left  = hwMap.get(DcMotor.class, "left_front");
+        left = hwMap.get(DcMotor.class, "left_front");
         right = hwMap.get(DcMotor.class, "right_front");
         color = hwMap.colorSensor.get("color_sensor");
-        leftBack   = hwMap.get(DcMotor.class, "left_back");
-        rightBack  = hwMap.get(DcMotor.class, "right_back");
-       // leftArm    = hwMap.get(DcMotor.class, "left_arm");
+        leftBack = hwMap.get(DcMotor.class, "left_back");
+        rightBack = hwMap.get(DcMotor.class, "right_back");
+        // leftArm    = hwMap.get(DcMotor.class, "left_arm");
         left.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         right.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
         leftBack.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
@@ -99,7 +98,7 @@ public class HardwareECRyug
         right.setPower(0);
         leftBack.setPower(0);
         rightBack.setPower(0);
-       // leftArm.setPower(0);
+        // leftArm.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
@@ -107,13 +106,40 @@ public class HardwareECRyug
         right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-      //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
-       // leftClaw  = hwMap.get(Servo.class, "left_hand");
-       // rightClaw = hwMap.get(Servo.class, "right_hand");
-       // leftClaw.setPosition(MID_SERVO);
-       // rightClaw.setPosition(MID_SERVO);
-    }
- }
+        // leftClaw  = hwMap.get(Servo.class, "left_hand");
+        // rightClaw = hwMap.get(Servo.class, "right_hand");
+        // leftClaw.setPosition(MID_SERVO);
+        // rightClaw.setPosition(MID_SERVO);
+
+        void stopMoving(double stopTime, ElapsedTime, runTime)
+        {
+            double end=runTime.seconds()+stopTime;
+
+            leftBack.setPower(0);
+            rightBack.setPower(0);
+            left.setPower(0);
+            right.setPower(0);
+
+            while (end > runTime.seconds())
+            { }
+        }
+
+        void forward(double speed, double stopTime,ElapsedTime,runTime)
+        {
+            double end = runTime.seconds() + stopTime;
+
+            leftBack.setPower(0);
+            rightBack.setPower(0);
+            left.setPower(0);
+            right.setPower(0);
+
+            while (end > runTime.seconds())}
+            { }
+
+
+
+
 
