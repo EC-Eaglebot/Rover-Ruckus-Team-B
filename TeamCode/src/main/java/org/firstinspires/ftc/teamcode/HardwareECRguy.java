@@ -155,6 +155,7 @@ public class HardwareECRguy {
         rightBack.setPower(Speed);
         while (end > Runtime.seconds()) {
         }
+
     }
 
     void TurnRight(double Speed, double Stoptime, ElapsedTime Runtime) {
@@ -200,7 +201,8 @@ public class HardwareECRguy {
         leftBack.setPower(speed);
         rightBack.setPower(speed);
         while (leftFront.isBusy()) {
-            //empty on purpose
+            //empty on purpos
+
         }
         leftFront.setPower(0);
         rightFront.setPower(0);
