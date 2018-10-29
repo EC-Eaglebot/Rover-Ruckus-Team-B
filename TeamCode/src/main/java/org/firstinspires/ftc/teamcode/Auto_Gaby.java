@@ -54,7 +54,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Auto Test Encoders", group="concepts")
+@Autonomous(name="Auto Gaby", group="concepts")
 //@Disabled
 public class Auto_Gaby extends LinearOpMode {
 
@@ -91,11 +91,12 @@ public class Auto_Gaby extends LinearOpMode {
         //Right_for_Distance(degrees, motor power)
         //StopMoving(seconds)
 
-        robot.Backward_for_Distance(48, .85);
+        robot.Forward_for_Distance(48, .5);
         //robot.Backward_for_Distance(48, .5);
-        robot.Right_for_Distance(360, .5);
+        robot.Left_for_Distance(90, .5);
         //robot turns left, 360 degrees, at 50% speed
-        robot.DumpIt;
+        robot.DumpIt(runtime);
+        //Dumps the symbol thing
         robot.StopMoving(1.0, runtime);
         //robot stops moving in 1 second
 
@@ -106,3 +107,4 @@ public class Auto_Gaby extends LinearOpMode {
 }
 
 //Goal: Backwards, Right, DumpIt
+//Wednesday: Make sure it works consistently and make sure to park in the crater
