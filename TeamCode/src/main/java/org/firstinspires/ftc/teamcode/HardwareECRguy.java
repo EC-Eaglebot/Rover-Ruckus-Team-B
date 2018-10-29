@@ -31,6 +31,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.ServoController;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -58,12 +60,11 @@ public class HardwareECRguy {
     public DcMotor leftBack = null;
     public DcMotor rightBack = null;
     // public DcMotor  leftArm     = null;
-    // public Servo    leftClaw    = null;
+    public Servo Dump    = null;
 //    public Servo    rightClaw   = null;
     public ColorSensor color;
 
-
-    // public static final double MID_SERVO       =  0.5 ;
+    public static final double MID_SERVO       =  0.5 ;
     //public static final double ARM_UP_POWER    =  0.45 ;
     // public static final double ARM_DOWN_POWER  = -0.45 ;
 
@@ -87,6 +88,7 @@ public class HardwareECRguy {
         color = hwMap.colorSensor.get("color_sensor");
         leftBack = hwMap.get(DcMotor.class, "left_back");
         rightBack = hwMap.get(DcMotor.class, "right_back");
+        Dump = hwMap.get(Servo.class,"Dump");
         // leftArm    = hwMap.get(DcMotor.class, "left_arm");
         leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         rightFront.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
@@ -98,6 +100,7 @@ public class HardwareECRguy {
         rightFront.setPower(0);
         leftBack.setPower(0);
         rightBack.setPower(0);
+        //Dump.setPower(0); (does not work)
         // leftArm.setPower(0);
 
         // Set all motors to run without encoders.
@@ -111,9 +114,13 @@ public class HardwareECRguy {
         // Define and initialize ALL installed servos.
         // leftClaw  = hwMap.get(Servo.class, "left_hand");
         // rightClaw = hwMap.get(Servo.class, "right_hand");
-        // leftClaw.setPosition(MID_SERVO);
+      Dump.setPosition(MID_SERVO);
         // rightClaw.setPosition(MID_SERVO);
 
+    }
+    //servo functions
+    void DumpIt(ElapsedTime runtime){
+        Dump.setPosition(1);
     }
 
     //FUNCTIONS: This first group uses time

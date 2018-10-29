@@ -74,6 +74,7 @@ public class ECRguytest_Auto extends LinearOpMode {
          * The init() method of the hardware class does all the work here
          */
         robot.init(hardwareMap);
+        int gold_qualifier = 100;
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
@@ -95,6 +96,42 @@ public class ECRguytest_Auto extends LinearOpMode {
         robot.StopMoving(3.0,runtime);
         //robot.Backward_for_Distance(48, .5);
         //sense color, if white continue
+        if (robot.color.blue() < gold_qualifier){
+            telemetry.addLine("WHITEY TIGHTY");
+            telemetry.update();
+            sleep(2000);
+            robot.Forward_for_Distance(10,.85);
+        } // if red
+        else {
+            telemetry.addLine("GOLD IN THEM THAR HILLS");
+            telemetry.update();
+            sleep(2000);
+            robot.Left_for_Distance(90, .5);
+            robot.StopMoving(3.0,runtime);
+            robot.Forward_for_Distance(12.4,.85);
+            robot.StopMoving(3.0,runtime);
+
+        }
+        if (robot.color.blue() < gold_qualifier) {
+            telemetry.addLine("WHITEY TIGHTY");
+            telemetry.update();
+            sleep(2000);
+            robot.Forward_for_Distance(10, .85);
+        }
+
+        else {
+            telemetry.addLine("GOLD IN THEM THAR HILLS");
+            telemetry.update();
+            sleep(2000);
+            robot.Right_for_Distance(90, .5);
+            robot.StopMoving(3.0, runtime);
+            robot.Forward_for_Distance(30, .85);
+            robot.StopMoving(3.0, runtime);
+            robot.Left_for_Distance(90, .5);
+            robot.Forward_for_Distance(5, 0.85);
+        }
+
+/*
         robot.Left_for_Distance(90, .5);
         robot.StopMoving(3.0,runtime);
        robot.Forward_for_Distance(12.4,.85);
@@ -111,7 +148,7 @@ public class ECRguytest_Auto extends LinearOpMode {
         robot.StopMoving(3.0,runtime);
         robot.Left_for_Distance(90,.5);
         robot.Forward_for_Distance(5,0.85);
-
+*/
 
 
 
