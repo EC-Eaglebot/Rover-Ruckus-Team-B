@@ -91,10 +91,11 @@ public class Auto_Gaby extends LinearOpMode {
         //Right_for_Distance(degrees, motor power)
         //StopMoving(seconds)
 
-        robot.Forward_for_Distance(48, .85);
+        robot.Backward_for_Distance(48, .85);
         //robot.Backward_for_Distance(48, .5);
-        robot.Left_for_Distance(360, .5);
+        robot.Right_for_Distance(360, .5);
         //robot turns left, 360 degrees, at 50% speed
+        robot.DumpIt;
         robot.StopMoving(1.0, runtime);
         //robot stops moving in 1 second
 
@@ -103,3 +104,5 @@ public class Auto_Gaby extends LinearOpMode {
         sleep(1000);
     }
 }
+
+//Goal: Backwards, Right, DumpIt
