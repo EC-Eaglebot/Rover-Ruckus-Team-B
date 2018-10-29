@@ -64,7 +64,7 @@ public class HardwareECRguy {
 //    public Servo    rightClaw   = null;
     public ColorSensor color;
 
-    public static final double MID_SERVO       =  0.5 ;
+    public static final double MID_SERVO       =  0.0 ;
     //public static final double ARM_UP_POWER    =  0.45 ;
     // public static final double ARM_DOWN_POWER  = -0.45 ;
 
@@ -120,7 +120,7 @@ public class HardwareECRguy {
     }
     //servo functions
     void DumpIt(ElapsedTime runtime){
-        Dump.setPosition(1);
+        Dump.setPosition(0.5);
     }
 
     //FUNCTIONS: This first group uses time
