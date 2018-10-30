@@ -99,6 +99,7 @@ public class Auto_Test_Color_Sensor extends LinearOpMode {
 
         // if white
         if (robot.color.blue() > gold_qualifier){
+
             telemetry.addLine("WHITEY TIGHTY");
             telemetry.update();
             sleep(2000);
