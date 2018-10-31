@@ -54,9 +54,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Auto Gaby", group="concepts")
+@Autonomous(name="Red Far", group="ECR^2")
 //@Disabled
-public class Auto_Gaby extends LinearOpMode {
+public class Auto_Red_Far extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareECRguy          robot   = new HardwareECRguy();
@@ -91,14 +91,21 @@ public class Auto_Gaby extends LinearOpMode {
         //Right_for_Distance(degrees, motor power)
         //StopMoving(seconds)
 
-        robot.Forward_for_Distance(48, .5);
-        //robot.Backward_for_Distance(48, .5);
+        //robot.StopMoving(15.0, runtime);
+            //Robot stops moving for first 15 seconds of Autonomous Mode. Do if other robot going first
+        robot.Forward_for_Distance(55, .5);
+            //robot moves forward for 48 at 50% speed
+        robot.Backward_for_Distance(8, .5);
         robot.Left_for_Distance(90, .5);
-        //robot turns left, 360 degrees, at 50% speed
+            //robot turns left, 360 degrees at 50% speed
         robot.DumpIt(runtime);
-        //Dumps the symbol thing
+            //Dumps the symbol thing
+        robot.Left_for_Distance(185, .5);
+            //robot turns left, 98 degrees at 50% speed
+        robot.Forward_for_Distance(95, .5);
+            //robot moves forward for 90 at 50% speed)
         robot.StopMoving(1.0, runtime);
-        //robot stops moving in 1 second
+            //robot stops moving in 1 second
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
