@@ -91,7 +91,7 @@ public class ECRguytest_Auto extends LinearOpMode {
         //Left_for_Distance(degrees, motor power)
         //Right_for_Distance(degrees, motor power)
         //StopMoving(seconds)
-        int gold_qualifier = 100;
+        int gold_qualifier = 60;
 
         robot.Forward_for_Distance(15, .85);
         robot.StopMoving(3.0,runtime);
@@ -111,6 +111,8 @@ public class ECRguytest_Auto extends LinearOpMode {
             robot.StopMoving(3.0,runtime);
             robot.Forward_for_Distance(12.4,.85);
             robot.StopMoving(3.0,runtime);
+            robot.Right_for_Distance(90,.5);
+
 
 
         if (robot.color.blue() < gold_qualifier) {

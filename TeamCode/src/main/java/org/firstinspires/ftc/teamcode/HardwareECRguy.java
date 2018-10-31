@@ -64,7 +64,8 @@ public class HardwareECRguy {
 //    public Servo    rightClaw   = null;
     public ColorSensor color;
 
-    public static final double MID_SERVO       =  0.0 ;
+    public static final double MID_SERVO       =  0.5 ;
+    public static final double START_SERVO      = 0.0;
     //public static final double ARM_UP_POWER    =  0.45 ;
     // public static final double ARM_DOWN_POWER  = -0.45 ;
 
@@ -114,7 +115,7 @@ public class HardwareECRguy {
         // Define and initialize ALL installed servos.
         // leftClaw  = hwMap.get(Servo.class, "left_hand");
         // rightClaw = hwMap.get(Servo.class, "right_hand");
-      Dump.setPosition(MID_SERVO);
+      Dump.setPosition(START_SERVO);
         // rightClaw.setPosition(MID_SERVO);
 
     }

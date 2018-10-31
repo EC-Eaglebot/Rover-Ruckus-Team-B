@@ -49,15 +49,15 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Pushbot: Teleop Tank", group="Pushbot")
-@Disabled
-public class pushbotTeleopTankIterativeJiahui extends OpMode{
+@TeleOp(name="ECR^2: Teleop Tank", group="ECR^2")
+//@Disabled
+public class TeleOp_Single_Driver extends OpMode{
 
     /* Declare OpMode members. */
-    HardwarePushbotJiahui robot       = new HardwarePushbotJiahui(); // use the class created to define a Pushbot's hardware
+    HardwareECRguy robot       = new HardwareECRguy(); // use the class created to define a Pushbot's hardware
                                                          // could also use HardwarePushbotMatrix class.
-    double          clawOffset  = 0.0 ;                  // Servo mid position
-    final double    CLAW_SPEED  = 0.02 ;                 // sets rate to move servo
+    double          dumpOffset  = 0.0 ;                  // Servo mid position
+    final double    SERVO_SPEED  = 0.02 ;                 // sets rate to move servo
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -92,39 +92,53 @@ public class pushbotTeleopTankIterativeJiahui extends OpMode{
      */
     @Override
     public void loop() {
-        double left;
-        double right;
+        double leftpush;
+        double rightpush;
 
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
-        left = -gamepad1.left_stick_y;
-        right = -gamepad1.right_stick_y;
+        leftpush = -gamepad1.left_stick_y;
+        rightpush = -gamepad1.right_stick_y;
 
-        robot.leftDrive.setPower(left);
-        robot.rightDrive.setPower(right);
+        robot.leftFront.setPower(leftpush);
+        robot.leftBack.setPower(leftpush);
+        //robot.rightfrontDrive.setPower(right);
+        robot.rightFront.setPower(rightpush);
+        robot.rightBack.setPower(rightpush);
+        //robot.rightbackDrive.setPower(right);
 
         // Use gamepad left & right Bumpers to open and close the claw
         if (gamepad1.right_bumper)
-            clawOffset += CLAW_SPEED;
+            dumpOffset += SERVO_SPEED;
         else if (gamepad1.left_bumper)
-            clawOffset -= CLAW_SPEED;
+            dumpOffset -= SERVO_SPEED;
 
         // Move both servos to new position.  Assume servos are mirror image of each other.
-        clawOffset = Range.clip(clawOffset, -0.5, 0.5);
-        robot.leftClaw.setPosition(robot.MID_SERVO + clawOffset);
-        robot.rightClaw.setPosition(robot.MID_SERVO - clawOffset);
+        dumpOffset = Range.clip(dumpOffset, -0.5, 0.5);
+        robot.Dump.setPosition(robot.MID_SERVO + dumpOffset);
+        //robot.rightClaw.setPosition(robot.MID_SERVO - clawOffset);
 
         // Use gamepad buttons to move the arm up (Y) and down (A)
-        if (gamepad1.y)
-            robot.leftArm.setPower(robot.ARM_UP_POWER);
-        else if (gamepad1.a)
-            robot.leftArm.setPower(robot.ARM_DOWN_POWER);
-        else
-            robot.leftArm.setPower(0.0);
+        //if (gamepad1.y)
+            //robot.leftArm.setPower(robot.ARM_UP_POWER);
+        //else if (gamepad1.a)
+            //robot.leftArm.setPower(robot.ARM_DOWN_POWER);
+        //else
+            //robot.leftArm.setPower(0.0);
 
         // Send telemetry message to signify robot running;
-        telemetry.addData("claw",  "Offset = %.2f", clawOffset);
-        telemetry.addData("left",  "%.2f", left);
-        telemetry.addData("right", "%.2f", right);
+        //telemetry.addData("claw",  "Offset = %.2f", clawOffset);
+        telemetry.addData("left",  "%.2f", leftpush);
+        telemetry.addData("right", "%.2f", rightpush);
+
+        if (gamepad1.y)
+        {
+                telemetry.addLine()
+                        .addData("R", "%d", robot.color.red())
+                        .addData("G", "%d", robot.color.green())
+                        .addData("B", "%d", robot.color.blue());
+                telemetry.update();
+
+        }
     }
 
     /*
