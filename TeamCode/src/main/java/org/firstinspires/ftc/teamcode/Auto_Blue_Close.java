@@ -95,14 +95,14 @@ public class Auto_Blue_Close extends LinearOpMode {
             //Robot stops moving for first 15 seconds of Autonomous Mode. Do if other robot going first
         robot.Forward_for_Distance(55, .5);
             //robot moves forward for 48 at 50% speed
-        robot.StopMoving(2, runtime);
+        robot.StopMoving(1, runtime);
             //StopMoving for 2 seconds
-        robot.Backward_for_Distance(8, .5);
+        robot.Backward_for_Distance(6, .5);
         robot.Left_for_Distance(90, .5);
             //robot turns left, 360 degrees at 50% speed
         robot.DumpIt(runtime);
             //Dumps the symbol thing
-        robot.Left_for_Distance(185, .5);
+        robot.Left_for_Distance(135, .5);
             //robot turns left, 185 degrees at 50% speed
         robot.Forward_for_Distance(95, 1);
             //robot moves forward for 90 at 100% speed)
