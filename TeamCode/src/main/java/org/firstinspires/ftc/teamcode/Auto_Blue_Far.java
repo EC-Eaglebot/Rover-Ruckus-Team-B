@@ -93,18 +93,21 @@ public class Auto_Blue_Far extends LinearOpMode {
 
         //robot.StopMoving(15.0, runtime);
             //Robot stops moving for first 15 seconds of Autonomous Mode. Do if other robot going first
-        robot.Forward_for_Distance(55, .5);
+        robot.Forward_for_Distance(12, .85);
+        robot.StopMoving(2,runtime);
             //robot moves forward for 48 at 50% speed
-        robot.Backward_for_Distance(8, .5);
         robot.Left_for_Distance(90, .5);
+        robot.StopMoving(2,runtime);
             //robot turns left, 360 degrees at 50% speed
-        robot.DumpIt(runtime);
+        robot.Forward_for_Distance(36,.85);
             //Dumps the symbol thing
-        robot.Left_for_Distance(200, .5);
+        robot.StopMoving(2,runtime);
             //robot turns left, 98 degrees at 50% speed
-        robot.Forward_for_Distance(95, .5);
+        robot.Left_for_Distance(45,.5);
+        robot.StopMoving(2,runtime);
             //robot moves forward for 90 at 50% speed)
-        robot.StopMoving(1.0, runtime);
+        robot.Forward_for_Distance(55,.85);
+        robot.DumpIt(runtime);
             //robot stops moving in 1 second
 
         telemetry.addData("Path", "Complete");
