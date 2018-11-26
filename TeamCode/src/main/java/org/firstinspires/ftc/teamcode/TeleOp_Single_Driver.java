@@ -118,12 +118,12 @@ public class TeleOp_Single_Driver extends OpMode{
         //robot.rightClaw.setPosition(robot.MID_SERVO - clawOffset);
 
         // Use gamepad buttons to move the arm up (Y) and down (A)
-        //if (gamepad1.y)
-            //robot.leftArm.setPower(robot.ARM_UP_POWER);
-        //else if (gamepad1.a)
-            //robot.leftArm.setPower(robot.ARM_DOWN_POWER);
-        //else
-            //robot.leftArm.setPower(0.0);
+        if (gamepad1.right_trigger)
+            robot.lift.setPower(robot.LIFT_POWER);
+        else if (gamepad1.left_trigger)
+            robot.lift.setPower(robot.REVERSE_LIFT_POWER);
+        else
+            robot.lift.setPower(0.0);
 
         // Send telemetry message to signify robot running;
         //telemetry.addData("claw",  "Offset = %.2f", clawOffset);

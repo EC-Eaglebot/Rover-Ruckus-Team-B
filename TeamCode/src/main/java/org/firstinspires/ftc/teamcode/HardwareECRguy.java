@@ -62,10 +62,15 @@ public class HardwareECRguy {
     // public DcMotor  leftArm     = null;
     public Servo Dump    = null;
 //    public Servo    rightClaw   = null;
+    public DcMotor lift = null;
+    public Servo claw = null;
     public ColorSensor color;
 
     public static final double MID_SERVO       =  0.5 ;
     public static final double START_SERVO      = 0.0;
+    public static final double LIFT_POWER = 0.5;
+    public static final double REVERSE_LIFT_POWER = -1 * LIFT_POWER;
+
     //public static final double ARM_UP_POWER    =  0.45 ;
     // public static final double ARM_DOWN_POWER  = -0.45 ;
 
@@ -90,6 +95,8 @@ public class HardwareECRguy {
         leftBack = hwMap.get(DcMotor.class, "left_back");
         rightBack = hwMap.get(DcMotor.class, "right_back");
         Dump = hwMap.get(Servo.class,"Dump");
+        claw = hwMap.get(Servo.class, "Claw");
+        lift = hwMap.get(DcMotor.class, "lift");
         // leftArm    = hwMap.get(DcMotor.class, "left_arm");
         leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         rightFront.setDirection(DcMotor.Direction.FORWARD);// Set to FORWARD if using AndyMark motors
@@ -101,6 +108,7 @@ public class HardwareECRguy {
         rightFront.setPower(0);
         leftBack.setPower(0);
         rightBack.setPower(0);
+        lift.setPower(0);
         //Dump.setPower(0); (does not work)
         // leftArm.setPower(0);
 
@@ -110,13 +118,11 @@ public class HardwareECRguy {
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //  leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        lift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        // Define and initialize ALL installed servos.
-        // leftClaw  = hwMap.get(Servo.class, "left_hand");
-        // rightClaw = hwMap.get(Servo.class, "right_hand");
       Dump.setPosition(START_SERVO);
-        // rightClaw.setPosition(MID_SERVO);
+      //claw.setPosition();
+      //Claw position not yet determined
 
     }
     //servo functions
@@ -265,5 +271,10 @@ public class HardwareECRguy {
     void Right_for_Distance(double degrees, double speed){
         this.Left_for_Distance(-degrees, -speed);
     }
+
+    void Lift_Up(double speed){
+        lift.setPower(speed);
+    }
+
  }
 
