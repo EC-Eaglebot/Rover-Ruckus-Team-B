@@ -56,7 +56,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="Blue Far", group="ECR^2")
 //@Disabled
-public class Auto_Blue_Far extends LinearOpMode {
+public class Delay_Far extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareECRguy          robot   = new HardwareECRguy();
@@ -91,7 +91,7 @@ public class Auto_Blue_Far extends LinearOpMode {
         //Right_for_Distance(degrees, motor power)
         //StopMoving(seconds)
 
-        //robot.StopMoving(15.0, runtime);
+        robot.StopMoving(15.0, runtime);
             //Robot stops moving for first 15 seconds of Autonomous Mode. Do if other robot going first
         robot.Forward_for_Distance(12, .75);
         robot.StopMoving(2,runtime);

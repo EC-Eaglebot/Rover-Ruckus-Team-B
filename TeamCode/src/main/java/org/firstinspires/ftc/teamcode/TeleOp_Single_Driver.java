@@ -96,8 +96,8 @@ public class TeleOp_Single_Driver extends OpMode{
         double rightpush;
 
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
-        leftpush = -gamepad1.left_stick_y;
-        rightpush = -gamepad1.right_stick_y;
+        leftpush = gamepad1.left_stick_y;
+        rightpush = gamepad1.right_stick_y;
 
         robot.leftFront.setPower(leftpush);
         robot.leftBack.setPower(leftpush);
