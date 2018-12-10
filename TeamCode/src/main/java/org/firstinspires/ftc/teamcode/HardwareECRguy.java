@@ -63,13 +63,13 @@ public class HardwareECRguy {
     public Servo Dump    = null;
 //    public Servo    rightClaw   = null;
     public DcMotor lift = null;
-    public Servo claw = null;
     public ColorSensor color;
 
     public static final double MID_SERVO       =  0.5 ;
-    public static final double START_SERVO      = 0.0;
+    public static final double START_SERVO      = 1.0;
     public static final double LIFT_POWER = 0.5;
     public static final double REVERSE_LIFT_POWER = -1 * LIFT_POWER;
+
 
     //public static final double ARM_UP_POWER    =  0.45 ;
     // public static final double ARM_DOWN_POWER  = -0.45 ;
@@ -95,7 +95,6 @@ public class HardwareECRguy {
         leftBack = hwMap.get(DcMotor.class, "left_back");
         rightBack = hwMap.get(DcMotor.class, "right_back");
         Dump = hwMap.get(Servo.class,"Dump");
-        claw = hwMap.get(Servo.class, "Claw");
         lift = hwMap.get(DcMotor.class, "lift");
         // leftArm    = hwMap.get(DcMotor.class, "left_arm");
         leftFront.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
@@ -272,9 +271,23 @@ public class HardwareECRguy {
         this.Left_for_Distance(-degrees, -speed);
     }
 
-    void Lift_Up(double speed){
-        lift.setPower(speed);
-    }
+    void Lift_Down(double Speed, double Stoptime, ElapsedTime Runtime)
 
+    {
+        double end = Runtime.seconds() + Stoptime;
+
+        lift.setPower(Speed);
+        while (end > Runtime.seconds()) {
+        }
+    }
+    void Lift_Up(double Speed, double Stoptime, ElapsedTime Runtime)
+
+    {
+        double end = Runtime.seconds() + Stoptime;
+
+        lift.setPower(-Speed);
+        while (end > Runtime.seconds()) {
+        }
+    }
  }
 

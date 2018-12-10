@@ -54,7 +54,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Close", group="ECR^2")
+@Autonomous(name="Delay Close", group="ECR^2")
 //@Disabled
 public class Delay_Close extends LinearOpMode {
 

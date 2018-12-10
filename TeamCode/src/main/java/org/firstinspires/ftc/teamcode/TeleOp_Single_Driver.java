@@ -99,11 +99,11 @@ public class TeleOp_Single_Driver extends OpMode{
         leftpush = gamepad1.left_stick_y;
         rightpush = gamepad1.right_stick_y;
 
-        robot.leftFront.setPower(leftpush);
-        robot.leftBack.setPower(leftpush);
+        robot.leftFront.setPower(-leftpush);
+        robot.leftBack.setPower(-leftpush);
         //robot.rightfrontDrive.setPower(right);
-        robot.rightFront.setPower(rightpush);
-        robot.rightBack.setPower(rightpush);
+        robot.rightFront.setPower(-rightpush);
+        robot.rightBack.setPower(-rightpush);
         //robot.rightbackDrive.setPower(right);
 
         // Use gamepad left & right Bumpers to open and close the claw
@@ -118,9 +118,9 @@ public class TeleOp_Single_Driver extends OpMode{
         //robot.rightClaw.setPosition(robot.MID_SERVO - clawOffset);
 
         // Use gamepad buttons to move the arm up (Y) and down (A)
-        if (gamepad1.right_trigger)
+        if (gamepad1.right_trigger == 1.0)
             robot.lift.setPower(robot.LIFT_POWER);
-        else if (gamepad1.left_trigger)
+        else if (gamepad1.left_trigger == 1.0)
             robot.lift.setPower(robot.REVERSE_LIFT_POWER);
         else
             robot.lift.setPower(0.0);
@@ -129,6 +129,7 @@ public class TeleOp_Single_Driver extends OpMode{
         //telemetry.addData("claw",  "Offset = %.2f", clawOffset);
         telemetry.addData("left",  "%.2f", leftpush);
         telemetry.addData("right", "%.2f", rightpush);
+
 
         if (gamepad1.y)
         {
