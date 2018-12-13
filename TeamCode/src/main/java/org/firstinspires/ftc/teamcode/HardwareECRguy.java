@@ -29,7 +29,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.hardware.ColorSensor;
+//import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoController;
@@ -63,7 +63,7 @@ public class HardwareECRguy {
     public Servo Dump    = null;
 //    public Servo    rightClaw   = null;
     public DcMotor lift = null;
-    public ColorSensor color;
+  //  public ColorSensor color;
 
     public static final double MID_SERVO       =  0.5 ;
     public static final double START_SERVO      = 1.0;
@@ -91,7 +91,7 @@ public class HardwareECRguy {
         // Define and Initialize Motors
         leftFront = hwMap.get(DcMotor.class, "left_front");
         rightFront = hwMap.get(DcMotor.class, "right_front");
-        color = hwMap.colorSensor.get("color_sensor");
+        //color = hwMap.colorSensor.get("color_sensor");
         leftBack = hwMap.get(DcMotor.class, "left_back");
         rightBack = hwMap.get(DcMotor.class, "right_back");
         Dump = hwMap.get(Servo.class,"Dump");
@@ -138,6 +138,9 @@ public class HardwareECRguy {
         rightBack.setPower(0);
         while (end > Runtime.seconds()) {
         }
+    }
+    void StopLift(double Stoptime, ElapsedTime Runtime){
+        lift.setPower(0);
     }
 
     void Forward(double Speed, double Stoptime, ElapsedTime Runtime) {

@@ -127,11 +127,11 @@ public class TeleOp_Single_Driver extends OpMode{
 
         // Send telemetry message to signify robot running;
         //telemetry.addData("claw",  "Offset = %.2f", clawOffset);
-        telemetry.addData("left",  "%.2f", leftpush);
+        telemetry.addData("left", "%.2f", leftpush);
         telemetry.addData("right", "%.2f", rightpush);
 
-
-        if (gamepad1.y)
+    }
+      /*  if (gamepad1.y)
         {
                 telemetry.addLine()
                         .addData("R", "%d", robot.color.red())
@@ -145,7 +145,9 @@ public class TeleOp_Single_Driver extends OpMode{
     /*
      * Code to run ONCE after the driver hits STOP
      */
-    @Override
-    public void stop() {
+   // @Override
+  /*  public void stop()
+        {
     }
+    */
 }

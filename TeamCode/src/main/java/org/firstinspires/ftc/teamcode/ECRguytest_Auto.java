@@ -97,7 +97,7 @@ public class ECRguytest_Auto extends LinearOpMode {
         robot.StopMoving(3.0,runtime);
         //robot.Backward_for_Distance(48, .5);
         //sense color, if white continue
-        if (robot.color.blue() < gold_qualifier){
+      /*  if (robot.color.blue() < gold_qualifier){
             telemetry.addLine("GOLDEN");
             telemetry.update();
             sleep(2000);

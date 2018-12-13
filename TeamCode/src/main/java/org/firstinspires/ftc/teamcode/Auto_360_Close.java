@@ -92,9 +92,11 @@ public class Auto_360_Close extends LinearOpMode {
         //StopMoving(seconds)
 
         //robot.StopMoving(15.0, runtime);
-        robot.Lift_Down(0.45,0.7,runtime);
-        robot.Lift_Up(0.5,0.25,runtime);
-        robot.StopMoving(2, runtime);
+        robot.Lift_Down(0.45,1.5,runtime);
+        robot.StopMoving(2,runtime);
+        robot.Right_for_Distance(125,.5);
+        robot.Lift_Up(0.5,0.5,runtime);
+        robot.StopLift(2, runtime);
         robot.Right_for_Distance(180,.5);
         robot.Lift_Up(0.5,0.5,runtime);
         robot.StopMoving(2,runtime);

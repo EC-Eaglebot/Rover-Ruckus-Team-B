@@ -87,7 +87,7 @@ public class Auto_Test_Color_Sensor extends LinearOpMode {
         //Sensor Test:
         //say Gold or White depending on the color reading
         //read the sensor
-        int gold_qualifier = 100;
+      /*  int gold_qualifier = 100;
         runtime.reset();
         while (runtime.seconds() < 3) {
             telemetry.addLine()
@@ -114,5 +114,8 @@ public class Auto_Test_Color_Sensor extends LinearOpMode {
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
+   */
     }
+
+
 }
