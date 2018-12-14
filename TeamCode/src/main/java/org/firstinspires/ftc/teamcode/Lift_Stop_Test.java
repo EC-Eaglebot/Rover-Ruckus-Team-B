@@ -54,9 +54,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="180_Close", group="ECR^2")
+@Autonomous(name="Lift_Stop", group="ECR^2")
 //@Disabled
-public class Auto_360_Close extends LinearOpMode {
+public class Lift_Stop_Test extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareECRguy          robot   = new HardwareECRguy();
@@ -91,40 +91,13 @@ public class Auto_360_Close extends LinearOpMode {
         //Right_for_Distance(degrees, motor power)
         //StopMoving(seconds)
 
-        //robot.StopMoving(15.0, runtime);
-        robot.Lift_Up(0.25,.4,runtime);
-        robot.StopMoving(4,runtime);
-       robot.Lift_Down(0.5,0.2,runtime);
-        //robot.Right_for_Distance(125,.5);
-        //robot.Lift_Up(0.5,0.5,runtime);
-        //robot.StopLift(2, runtime);
-        robot.StopMoving(2,runtime);
-        robot.Right_for_Distance(180,.5);
-        robot.Lift_Down(0.5,0.5,runtime);
-        robot.StopMoving(2,runtime);
 
-            //Robot stops moving for first 15 seconds of Autonomous Mode. Do if other robot going first
-        robot.Forward_for_Distance(55, .5);
-            //robot moves forward for 48 at 50% speed
-        robot.StopMoving(1, runtime);
-            //StopMoving for 2 seconds
-        robot.Backward_for_Distance(6, .5);
-        robot.StopMoving(2,runtime);
-        robot.Right_for_Distance(70, .5);
-        robot.StopMoving(2,runtime);
-            //robot turns left, 360 degrees at 50% speed
-        robot.DumpIt(runtime);
-            //Dumps the symbol thing
-        robot.Right_for_Distance(70, .5);
-            //robot turns left, 185 degrees at 50% speed
-        robot.Forward_for_Distance(87, 1);
-            //robot moves forward for 90 at 100% speed)
-        robot.StopMoving(1.0, runtime);
-            //robot stops moving in 1 second
+        robot.Lift_Up(1.5,.5,runtime);
+        robot.StopMoving(2.0, runtime);
+        robot.Lift_Down(1.5,0.5,runtime);
 
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-        sleep(1000);
+
+
     }
 }
 

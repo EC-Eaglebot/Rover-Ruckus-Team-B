@@ -136,6 +136,7 @@ public class HardwareECRguy {
         rightFront.setPower(0);
         leftBack.setPower(0);
         rightBack.setPower(0);
+        lift.setPower(0);
         while (end > Runtime.seconds()) {
         }
     }
@@ -279,7 +280,7 @@ public class HardwareECRguy {
     {
         double end = Runtime.seconds() + Stoptime;
 
-        lift.setPower(Speed);
+        lift.setPower(-Speed);
         while (end > Runtime.seconds()) {
         }
     }
@@ -288,7 +289,7 @@ public class HardwareECRguy {
     {
         double end = Runtime.seconds() + Stoptime;
 
-        lift.setPower(-Speed);
+        lift.setPower(Speed);
         while (end > Runtime.seconds()) {
         }
     }
