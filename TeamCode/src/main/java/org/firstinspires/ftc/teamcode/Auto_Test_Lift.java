@@ -54,9 +54,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Delay Far", group="ECR^2")
+@Autonomous(name="Lift_Stop", group="concepts")
 //@Disabled
-public class Delay_Far extends LinearOpMode {
+public class Auto_Test_Lift extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareECRguy          robot   = new HardwareECRguy();
@@ -91,28 +91,13 @@ public class Delay_Far extends LinearOpMode {
         //Right_for_Distance(degrees, motor power)
         //StopMoving(seconds)
 
-        robot.StopMoving(15.0, runtime);
-            //Robot stops moving for first 15 seconds of Autonomous Mode. Do if other robot going first
-        robot.Forward_for_Distance(12, .75);
-        robot.StopMoving(2,runtime);
-            //robot moves forward for 48 at 50% speed
-        robot.Left_for_Distance(90, .5);
-        robot.StopMoving(2,runtime);
-            //robot turns left, 360 degrees at 50% speed
-        robot.Forward_for_Distance(36,.85);
-            //Dumps the symbol thing
-        robot.StopMoving(2,runtime);
-            //robot turns left, 98 degrees at 50% speed
-        robot.Left_for_Distance(45,.5);
-        robot.StopMoving(2,runtime);
-            //robot moves forward for 90 at 50% speed)
-        robot.Forward_for_Distance(55,.85);
-        robot.DumpIt(runtime);
-            //robot stops moving in 1 second
 
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-        sleep(1000);
+        robot.Lift_Up(1.5,.5,runtime);
+        robot.StopMoving(2.0, runtime);
+        robot.Lift_Down(1.5,0.5,runtime);
+
+
+
     }
 }
 

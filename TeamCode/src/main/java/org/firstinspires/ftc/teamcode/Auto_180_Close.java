@@ -56,7 +56,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="180_Close", group="ECR^2")
 //@Disabled
-public class Auto_360_Close extends LinearOpMode {
+public class Auto_180_Close extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareECRguy          robot   = new HardwareECRguy();

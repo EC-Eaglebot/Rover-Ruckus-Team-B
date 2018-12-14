@@ -54,9 +54,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Red Close", group="ECR^2")
+@Autonomous(name="180_Far", group="ECR^2")
 //@Disabled
-public class Auto_Red_Close extends LinearOpMode {
+public class Auto_180_Far extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareECRguy          robot   = new HardwareECRguy();
@@ -93,18 +93,33 @@ public class Auto_Red_Close extends LinearOpMode {
 
         //robot.StopMoving(15.0, runtime);
             //Robot stops moving for first 15 seconds of Autonomous Mode. Do if other robot going first
-        robot.Forward_for_Distance(55, .5);
+        robot.Lift_Up(0.25,.4,runtime);
+        robot.StopMoving(2,runtime);
+        robot.Lift_Down(0.5,0.2,runtime);
+        robot.StopMoving(1,runtime);
+        robot.Right_for_Distance(180,.5);
+        robot.Lift_Down(0.5,0.5,runtime);
+        robot.StopMoving(1,runtime);
+        robot.Forward_for_Distance(12, .75);
+        robot.StopMoving(1,runtime);
             //robot moves forward for 48 at 50% speed
-        robot.Backward_for_Distance(8, .5);
         robot.Left_for_Distance(90, .5);
+        robot.StopMoving(1,runtime);
             //robot turns left, 360 degrees at 50% speed
-        robot.DumpIt(runtime);
+        robot.Forward_for_Distance(36,.85);
             //Dumps the symbol thing
-        robot.Left_for_Distance(200, .5);
+        robot.StopMoving(1,runtime);
             //robot turns left, 98 degrees at 50% speed
-        robot.Forward_for_Distance(95, .5);
+        robot.Left_for_Distance(45,.5);
+        robot.StopMoving(1,runtime);
             //robot moves forward for 90 at 50% speed)
-        robot.StopMoving(1.0, runtime);
+        robot.Forward_for_Distance(50,.85);
+        robot.Right_for_Distance(135,0.5);
+        robot.StopMoving(1,runtime);
+        robot.DumpIt(runtime);
+        robot.StopMoving(1,runtime);
+        robot.Right_for_Distance(45,0.5);
+        robot.Forward_for_Distance(90,0.85);
             //robot stops moving in 1 second
 
         telemetry.addData("Path", "Complete");

@@ -54,7 +54,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Blue Far", group="ECR^2")
+@Autonomous(name="No Drop  Far", group="ECR^2")
 //@Disabled
 public class Auto_Blue_Far extends LinearOpMode {
 
